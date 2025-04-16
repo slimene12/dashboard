@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteInvoice } from '@/app/lib/actions';
@@ -26,8 +27,13 @@ export function UpdateInvoice({ id }: { id: string }) {
 export function DeleteInvoice({ id }: { id: string }) {
   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
   return (
-    <form action={deleteInvoiceWithId}>
-      <button className='rounded-md border p-2 hover:bg-gray-100'>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault(); // Empêche la soumission par défaut du formulaire
+        deleteInvoiceWithId(); // Appelle la fonction de suppression
+      }}
+    >
+      <button type='submit' className='rounded-md border p-2 hover:bg-gray-100'>
         <span className='sr-only'>Suprimer</span>
         <TrashIcon className='w-5' />
       </button>

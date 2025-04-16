@@ -16,9 +16,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  /* const data = await fetchCardData();
-  const totalPaidInvoices = data?.totalPaidInvoices ?? 'N/A';
-  const totalPendingInvoices = data?.totalPendingInvoices ?? 'N/A'; */
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>

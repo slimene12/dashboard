@@ -10,6 +10,7 @@ import Button from './button';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { useFormStatus } from 'react-dom';
 import { authenticate } from '../lib/actions';
+import { redirect } from 'next/navigation';
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useActionState(authenticate, undefined);
@@ -77,8 +78,15 @@ export default function LoginForm() {
 }
 function LoginButton() {
   const { pending } = useFormStatus();
+  const handleredirect = () => {
+    redirect('/dashboard');
+  };
   return (
-    <Button className='mt-4 w-full' aria-disabled={pending}>
+    <Button
+      className='mt-4 w-full'
+      aria-disabled={pending}
+      onClick={handleredirect}
+    >
       se connecter <ArrowRightIcon className='ml-auto h-5 w-5 text-gray-50' />
     </Button>
   );
